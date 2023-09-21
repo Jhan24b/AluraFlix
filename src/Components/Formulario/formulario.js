@@ -1,0 +1,78 @@
+import "../Formulario/formulario.css";
+import Campo from "../Campo/Campo";
+import ListaOpciones from "../ListaOpciones/ListaOpciones";
+import Boton from "../Boton/boton";
+
+import { useState } from "react";
+import { v4 as uuid } from "uuid";
+
+function Formulario(props) {
+
+    const [titulo, actualizarTitulo] = useState("");
+    const [enlace, actualizarEnlace] = useState("");
+    const [foto, actualizarFoto] = useState("");
+    const [categoria, actualizarCategoria] = useState("");
+    const [descripcion, actualizarDescripcion] = useState("");
+    const [brief, actualizarBrief] = useState("");
+    const [codigo, actualizarCodigo] = useState("");
+
+    const manejarEnvio = (event) => {
+        event.preventDefault();
+        const datosEnviar = {
+            id: uuid(),
+            titulo: titulo,
+            enlace: enlace,
+            foto: foto,
+            categoria: categoria,
+            descripcion: descripcion,
+            brief: brief,
+            codigo: codigo
+        }
+        props.registrarVideo(datosEnviar);
+    }
+
+
+
+    const limpiarCampos = () => {
+        actualizarTitulo('');
+        actualizarEnlace('');
+        actualizarFoto('');
+        actualizarCategoria('');
+        actualizarDescripcion('');
+        actualizarCodigo('');
+        actualizarBrief('');
+    };
+
+    return (
+        <section className="formularioVideo">
+            {(
+                <div className="contenedor">
+                    <form onSubmit={manejarEnvio}>
+                        <h2>Nuevo Video</h2>
+                        <Campo titulo="Titulo" placeholder="Ingrese el titulo" required valor={titulo} actualizarValor={actualizarTitulo} />
+                        <Campo titulo="Link" placeholder="Ingrese puesto" required valor={enlace} actualizarValor={actualizarEnlace} />
+                        <Campo titulo="Foto" placeholder="Ingrese enlace de foto" required valor={foto} actualizarValor={actualizarFoto} />
+                        <ListaOpciones valor={categoria} actualizarValor={actualizarCategoria} equipos={props.data} />
+                        <Campo titulo="Descripcion" placeholder="Ingrese una descripcion" required valor={descripcion} actualizarValor={actualizarDescripcion} />
+                        <Campo titulo="Codigo" placeholder="Ingrese el codigo de seguridad" required valor={codigo} actualizarValor={actualizarCodigo} />
+                        <div className="cajaBotones">
+                            <Boton title="Guardar" />
+                            <div className="botonesAcciones">
+                                <div className="limpiar">
+                                    <Boton onClick={limpiarCampos} title="Limpiar" />
+                                </div>
+                                <div className="crear">
+                                    <Boton type="button" onClick={props.cambiarMostrarCategoria} title="Nueva Categoria" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            )}
+
+        </section>
+    );
+}
+
+export default Formulario;

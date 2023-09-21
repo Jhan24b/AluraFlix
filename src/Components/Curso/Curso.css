@@ -1,0 +1,32 @@
+*{
+    font-family: Roboto;
+}
+
+.categoria{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 5px 50px
+}
+
+.cabecera{
+    display: flex;
+    align-items: center;
+}
+
+.titulo--cabecera{
+    font-size: 35px;
+    color: white;
+    padding: 5px 30px;
+    margin: 12px 0px; 
+}
+
+.resume--cabecera{
+    color: white;
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.categoria--videos{
+    display: flex;
+}

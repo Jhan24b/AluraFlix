@@ -1,0 +1,11 @@
+.video{
+    position: relative;
+    margin: 10px 16px 10px 0px;
+    border-color: red;
+}
+
+.eliminar{
+    position: absolute;
+    right: -15px;
+    top: -15px;
+}

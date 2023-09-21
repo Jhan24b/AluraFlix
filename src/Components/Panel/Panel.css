@@ -1,0 +1,31 @@
+.panel {
+    position: relative;
+    max-height: 832px;
+    display: inline-block;
+}
+
+.imgPanel {
+    display: inline;
+    width: 100%;
+    height: auto;
+}
+
+.overlay-azul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 18, 51, 0.56);
+    /* Ajusta la opacidad según sea necesario */
+    pointer-events: none;
+    /* Evita que el overlay bloqueé los eventos del mouse */
+}
+
+.contenidoPanel{
+    display: inline;
+    position: relative;
+    background-color: black;
+    color: red;
+    top: -300px;
+}
