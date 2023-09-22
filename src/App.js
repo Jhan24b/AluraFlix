@@ -202,8 +202,12 @@ function App() {
 
   //Crear Curso
   const crearCurso = (nuevoCurso) => {
-    console.log(nuevoCurso);
-    actualizarCursos([...cursos, { ...nuevoCurso, id: uuidv4() }])
+    actualizarCursos([...cursos, { ...nuevoCurso, id: uuidv4() }]);
+    actualizarVideos(() => {
+      let videosSecundarios = JSON.parse(JSON.stringify(cursos));
+      videosSecundarios[0].videos.shift();
+      return videosSecundarios;
+    });
   }
 
   //Eliminar a un curso

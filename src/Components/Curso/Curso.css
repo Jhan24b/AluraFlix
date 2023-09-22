@@ -5,8 +5,9 @@
 .categoria{
     display: flex;
     flex-direction: column;
-    background-color: black;
-    padding: 5px 50px
+    padding: 5px 50px;
+    position: relative;
+    top: -64px;
 }
 
 .cabecera{

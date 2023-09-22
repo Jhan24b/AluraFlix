@@ -11,6 +11,14 @@
   pointer-events: none;
 }
 
+.cursos{
+  background-color: black;
+}
+
+.cursos img{
+  height: 260px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
