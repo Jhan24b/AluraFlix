@@ -31,10 +31,19 @@ function FormularioCategoria(props) {
 
   const manejarNuevaCategoria = (e) => {
     e.preventDefault();
-    crearCurso({ id: uuid, nombre, descripcion, colorPrimario: color, codigo });
+    crearCurso({
+      id: uuid,
+      titulo: nombre,
+      descripcion,
+      brief: "",
+      colorPrimario: color,
+      colorSecundario: color,
+      codigo,
+      videos: []
+    });
   }
 
-  const renderCell = React.useCallback((user, columnKey) => {
+  const renderCell = React.useCallback((user, columnKey, eliminar) => {
     const cellValue = user[columnKey];
 
     switch (columnKey) {
@@ -69,12 +78,12 @@ function FormularioCategoria(props) {
                 <EyeIcon />
               </span>
             </Tooltip>
-            <Tooltip content="Edit user">
+            <Tooltip content="Edit Curso">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <EditIcon />
               </span>
             </Tooltip>
-            <Tooltip color="danger" content="Delete user">
+            <Tooltip color="danger" content="Delete curso">
               <span className="text-lg text-danger cursor-pointer active:opacity-50">
                 <DeleteIcon />
               </span>
@@ -84,7 +93,7 @@ function FormularioCategoria(props) {
       case "edit":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit user">
+            <Tooltip content="Edit curso">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50 detalle">
                 <EditIcon />
                 <p className="textoIcono">Editar</p>
@@ -95,10 +104,10 @@ function FormularioCategoria(props) {
       case "delete":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip color="danger" content="Delete user">
+            <Tooltip color="danger" content="Delete curso">
               <span className="text-lg text-danger cursor-pointer active:opacity-50 detalle">
                 <DeleteIcon />
-                <p className="textoIcono">Eliminar</p>
+                <button onClick={eliminar(user.id)} className="textoIcono">Eliminar</button>
               </span>
             </Tooltip>
           </div>
@@ -133,7 +142,7 @@ function FormularioCategoria(props) {
       <TableBody items={props.cursos}>
         {(item) => (
           <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+            {(columnKey) => <TableCell>{renderCell(item, columnKey, props.eliminarCurso)}</TableCell>}
           </TableRow>
         )}
       </TableBody>

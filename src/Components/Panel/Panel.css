@@ -1,7 +1,7 @@
 .panel {
     position: relative;
-    max-height: 832px;
     display: inline-block;
+    width: 100%;
 }
 
 .imgPanel {
@@ -20,12 +20,27 @@
     /* Ajusta la opacidad según sea necesario */
     pointer-events: none;
     /* Evita que el overlay bloqueé los eventos del mouse */
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.contenidoPanel{
-    display: inline;
-    position: relative;
-    background-color: black;
-    color: red;
-    top: -300px;
+.textoVideo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 200px;
+}
+
+.titulo--textoVideo{
+    width: 205px;
+    font-size: 35px;
+    color: white;
+    padding: 5px 30px;
+}
+
+.resume--textoVideo{
+    font-size: 20px;
 }

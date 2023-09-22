@@ -20,18 +20,11 @@ function Formulario(props) {
         event.preventDefault();
         const datosEnviar = {
             id: uuid(),
-            titulo: titulo,
-            enlace: enlace,
-            foto: foto,
-            categoria: categoria,
-            descripcion: descripcion,
-            brief: brief,
-            codigo: codigo
+            link: enlace,
+            img: foto
         }
-        props.registrarVideo(datosEnviar);
+        props.registrarVideo(datosEnviar, categoria);
     }
-
-
 
     const limpiarCampos = () => {
         actualizarTitulo('');
@@ -49,9 +42,9 @@ function Formulario(props) {
                 <div className="contenedor">
                     <form onSubmit={manejarEnvio}>
                         <h2>Nuevo Video</h2>
-                        <Campo titulo="Titulo" placeholder="Ingrese el titulo" required valor={titulo} actualizarValor={actualizarTitulo} />
-                        <Campo titulo="Link" placeholder="Ingrese puesto" required valor={enlace} actualizarValor={actualizarEnlace} />
-                        <Campo titulo="Foto" placeholder="Ingrese enlace de foto" required valor={foto} actualizarValor={actualizarFoto} />
+                        <Campo titulo="Titulo" placeholder="Titulo" required valor={titulo} actualizarValor={actualizarTitulo} />
+                        <Campo titulo="Link" placeholder="Link del video" required valor={enlace} actualizarValor={actualizarEnlace} />
+                        <Campo titulo="Foto" placeholder="Link imagen del video" required valor={foto} actualizarValor={actualizarFoto} />
                         <ListaOpciones valor={categoria} actualizarValor={actualizarCategoria} equipos={props.data} />
                         <Campo titulo="Descripcion" placeholder="Ingrese una descripcion" required valor={descripcion} actualizarValor={actualizarDescripcion} />
                         <Campo titulo="Codigo" placeholder="Ingrese el codigo de seguridad" required valor={codigo} actualizarValor={actualizarCodigo} />
