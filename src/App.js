@@ -241,7 +241,6 @@ function App() {
   // Registrar un nuevo video
   const registrarVideo = (video, nameCategoria) => {
     const cursoFiltrado = cursos.find((curso) => curso.titulo === nameCategoria);
-
     if (cursoFiltrado) {
       // Agregar el video al curso encontrado
       cursoFiltrado.videos.push(video);
@@ -253,7 +252,13 @@ function App() {
       const cursosActualizados = [...cursosSinAlterar, cursoFiltrado];
 
       // Actualizar el estado de cursos
+      
       actualizarCursos(cursosActualizados);
+      actualizarVideos(() => {
+        let videosSecundarios = JSON.parse(JSON.stringify(cursosActualizados));
+        videosSecundarios[0].videos.shift();
+        return videosSecundarios;
+      });
     } else {
       console.log(`No se encontró ningún curso con el nombre de categoría: ${nameCategoria}`);
     }

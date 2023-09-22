@@ -15,15 +15,17 @@ function Formulario(props) {
     const [descripcion, actualizarDescripcion] = useState("");
     const [brief, actualizarBrief] = useState("");
     const [codigo, actualizarCodigo] = useState("");
+    const {registrarVideo} = props;
 
-    const manejarEnvio = (event) => {
+    const manejarEnvioNuevo = (event) => {
         event.preventDefault();
         const datosEnviar = {
             id: uuid(),
             link: enlace,
             img: foto
         }
-        props.registrarVideo(datosEnviar, categoria);
+        registrarVideo(datosEnviar, categoria);
+        limpiarCampos();
     }
 
     const limpiarCampos = () => {
@@ -33,14 +35,14 @@ function Formulario(props) {
         actualizarCategoria('');
         actualizarDescripcion('');
         actualizarCodigo('');
-        actualizarBrief('');
+        actualizarBrief(brief);
     };
 
     return (
         <section className="formularioVideo">
             {(
                 <div className="contenedor">
-                    <form onSubmit={manejarEnvio}>
+                    <form onSubmit={manejarEnvioNuevo}>
                         <h2>Nuevo Video</h2>
                         <Campo titulo="Titulo" placeholder="Titulo" required valor={titulo} actualizarValor={actualizarTitulo} />
                         <Campo titulo="Link" placeholder="Link del video" required valor={enlace} actualizarValor={actualizarEnlace} />

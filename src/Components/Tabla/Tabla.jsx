@@ -2,7 +2,8 @@ import "../Tabla/Tabla.css";
 import { Space, Table} from 'antd';
 
 function Tabla(props) {
-    const {lista, eliminar, editar} = props;
+    const {lista, eliminar, modificar, modificado} = props;
+
     const columns = [
         {
           title: 'Nombre',
@@ -20,7 +21,8 @@ function Tabla(props) {
           key: 'edit',
           render: (_, record) => (
             <Space size="middle">
-              <button onClick={() => editar(record.id)}> Edit</button>
+              <button onClick={() => {modificar(record);
+              modificado(record)}}> Edit</button>
             </Space>
           ),
         },
