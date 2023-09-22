@@ -1,7 +1,7 @@
 {
   "name": "aluraflix",
   "version": "0.1.0",
-  "homepage": "https://jhan24b.github.io/Aluraflix",
+  "homepage": "https://jhan24b.github.io/Aluraflix/",
   "private": true,
   "dependencies": {
     "@nextui-org/react": "^2.1.12",
