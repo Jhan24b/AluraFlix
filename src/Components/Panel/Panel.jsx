@@ -16,7 +16,7 @@ function Panel(props) {
                             {props.cursos[0].brief}
                         </div>
                     </div>
-                    <Video detalle={props.cursos[0].videos[0]} key={props.cursos[0].videos[0].id} color={props.cursos[0].colorPrimario} />
+                    <Video detalle={props.cursos[0].videos[0]} key={props.cursos[0].videos[0].id} color={props.cursos[0].colorPrimario} className='video'/>
                 </div>
             </div>
         </div>

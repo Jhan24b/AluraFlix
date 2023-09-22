@@ -15,10 +15,12 @@
 }
 
 .titulo--cabecera{
-    font-size: 35px;
+    font-size: 32px;
     color: white;
     padding: 5px 30px;
-    margin: 12px 0px; 
+    margin: 12px 0px;
+    min-width: 200px;
+    text-align: center;
 }
 
 .resume--cabecera{

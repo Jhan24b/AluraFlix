@@ -5,7 +5,16 @@ import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import Formulario from './Components/Formulario/formulario';
 import Curso from './Components/Curso/Curso';
-import portada from './Components/Files/VideoCard.png';
+import fe1 from './Components/Files/VideoCard.png';
+import fe2 from './Components/Files/fe-img2.png';
+import fe3 from './Components/Files/fe-img3.png';
+import fe4 from './Components/Files/fe-img4.png';
+import be1 from './Components/Files/be-img1.png';
+import be2 from './Components/Files/be-img2.png';
+import be3 from './Components/Files/be-img3.png';
+import ig1 from './Components/Files/ig-img1.png';
+import ig2 from './Components/Files/ig-img2.png';
+import ig3 from './Components/Files/ig-img3.png';
 import FormularioCategoria from './Components/Formulario/formularioCategoria';
 
 import { v4 as uuidv4 } from "uuid";
@@ -18,6 +27,35 @@ function App() {
   const [mostrarNuevaCategoria, actualizarNuevaCategoria] = useState(false);
   const [cursos, actualizarCursos] = useState([{
     id: uuidv4(),
+    titulo: "Front End",
+    descripcion: "Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.",
+    brief: "Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React.",
+    colorPrimario: "#6BD1FF",
+    colorSecundario: "#6BD1FF",
+    videos: [
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: fe1
+      },
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: fe2
+      },
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: fe3
+      },
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: fe4
+      }
+    ]
+  },{
+    id: uuidv4(),
     titulo: "Back End",
     descripcion: "Todos los videos que estoy usando para estudiar Back End",
     brief: "Este challenge es una forma de mensaje",
@@ -27,12 +65,39 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: be1
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: be2
+      },
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: be3
+      }
+    ]
+  },{
+    titulo: "Innovation and Managment",
+    descripcion: "Como mantener al equipo feliz y mucho mas", brief: "Este challenge es una forma de mensaje",
+    colorPrimario: "#FF8C2A",
+    colorSecundario: "#ffeedf",
+    id: uuidv4(),
+    videos: [
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: ig1
+      },
+      {
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: ig2
+      },{
+        id: uuidv4(),
+        link: "www.youtube.com",
+        img: ig3
       }
     ]
   }, {
@@ -46,12 +111,12 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       }
     ]
   }, {
@@ -65,12 +130,12 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       }
     ]
   }, {
@@ -84,12 +149,12 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       }
     ]
   }, {
@@ -102,12 +167,12 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       }
     ]
   }, {
@@ -120,37 +185,19 @@ function App() {
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
+        img: ig3
       },
       {
         id: uuidv4(),
         link: "www.youtube.com",
-        img: portada
-      }
-    ]
-  }, {
-    titulo: "Innovation and Managment",
-    descripcion: "Como mantener al equipo feliz y mucho mas", brief: "Este challenge es una forma de mensaje",
-    colorPrimario: "#FF8C2A",
-    colorSecundario: "#ffeedf",
-    id: uuidv4(),
-    videos: [
-      {
-        id: uuidv4(),
-        link: "www.youtube.com",
-        img: portada
-      },
-      {
-        id: uuidv4(),
-        link: "www.youtube.com",
-        img: portada
+        img: ig3
       }
     ]
   }])
   const [videos, actualizarVideos] = useState(() => {
-    let videosSecundarios = [...cursos];
+    let videosSecundarios = JSON.parse(JSON.stringify(cursos));
     videosSecundarios[0].videos.shift();
-    return (videosSecundarios);
+    return videosSecundarios;
   });
 
   //Crear Curso
@@ -235,6 +282,7 @@ function App() {
             datos={curso}
             key={curso.id}
             videos={curso.videos}
+            var = {curso.titulo !== videos[0].titulo}
           />)
         })}
       </div>}
@@ -242,7 +290,6 @@ function App() {
         <Formulario data={cursos.map((curso) => curso.titulo)}
           registrarVideo={registrarVideo}
           cambiarMostrarCategoria={cambiarMostrarCategoria}
-
         />}
       {mostrarNuevaCategoria &&
         <FormularioCategoria

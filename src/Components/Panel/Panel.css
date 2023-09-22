@@ -22,7 +22,7 @@
     /* Evita que el overlay bloqueé los eventos del mouse */
     color: aliceblue;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -32,13 +32,15 @@
     flex-direction: column;
     justify-content: space-evenly;
     height: 200px;
+    width: 664px;
 }
 
 .titulo--textoVideo{
-    width: 205px;
+    width: 215px;
     font-size: 35px;
     color: white;
-    padding: 5px 30px;
+    padding: 5px 32px;
+    margin-bottom: 16px;
 }
 
 .resume--textoVideo{
