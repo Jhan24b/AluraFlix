@@ -1,20 +1,10 @@
 import "./formularioCategoria.css";
 import Campo from "../Campo/Campo";
 import Boton from "../Boton/boton";
+import Tabla from "../Tabla/Tabla"
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import React from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip } from "@nextui-org/react";
-import { EditIcon } from "./EditIcon";
-import { DeleteIcon } from "./DeleteIcon";
-import { EyeIcon } from "./EyeIcon";
-
-const statusColorMap = {
-  active: "success",
-  paused: "danger",
-  vacation: "warning",
-};
-
 
 function FormularioCategoria(props) {
 
@@ -22,12 +12,8 @@ function FormularioCategoria(props) {
   const [descripcion, actualizarDescripcion] = useState("");
   const [codigo, actualizarCodigo] = useState("");
   const [color, actualizarColor] = useState("");
-  const encabezados = [{ name: "Nombre", uid: "titulo" },
-  { name: "Descripcion", uid: "descripcion" },
-  { name: "Editar", uid: "edit" },
-  { name: "Eliminar", uid: "delete" }];
 
-  const { crearCurso } = props;
+  const { crearCurso, cursos } = props;
 
   const manejarNuevaCategoria = (e) => {
     e.preventDefault();
@@ -43,79 +29,13 @@ function FormularioCategoria(props) {
     });
   }
 
-  const renderCell = React.useCallback((user, columnKey, eliminar) => {
-    const cellValue = user[columnKey];
-
-    switch (columnKey) {
-      case "name":
-        return (
-          <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-sm capitalize">{cellValue}</p>
-            <p className="text-bold text-sm capitalize text-default-400">{user.team}</p>
-          </div>
-        );
-      case "status":
-        return (
-          <Chip className="capitalize" color={statusColorMap[user.status]} size="sm" variant="flat">
-            {cellValue}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Details">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            <Tooltip content="Edit Curso">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EditIcon />
-              </span>
-            </Tooltip>
-            <Tooltip color="danger" content="Delete curso">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      case "edit":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit curso">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50 detalle">
-                <EditIcon />
-                <p className="textoIcono">Editar</p>
-              </span>
-            </Tooltip>
-          </div>
-        );
-      case "delete":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip color="danger" content="Delete curso">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50 detalle">
-                <DeleteIcon />
-                <button onClick={eliminar(user.id)} className="textoIcono">Eliminar</button>
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+  const limpiar = (e) =>{
+    e.preventDefault();
+    actualizarNombre('');
+    actualizarDescripcion('');
+    actualizarCodigo('');
+    actualizarColor('');
+  }
 
   return <section className="formularioCategoria">
     <form onSubmit={manejarNuevaCategoria} className="formulario">
@@ -128,25 +48,12 @@ function FormularioCategoria(props) {
       <Campo titulo="Codigo" placeholder="Ingrese el codigo de seguridad" required valor={codigo} actualizarValor={actualizarCodigo} />
       <div className="botones">
         <Boton title="Guardar" />
-        <Boton title="Limpiar" />
+        <Boton title="Limpiar" onClick={limpiar}/>
       </div>
     </form>
-    <Table aria-label="Example table with custom cells">
-      <TableHeader columns={encabezados}>
-        {(column) => (
-          <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
-            {column.name}
-          </TableColumn>
-        )}
-      </TableHeader>
-      <TableBody items={props.cursos}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey, props.eliminarCurso)}</TableCell>}
-          </TableRow>
-        )}
-      </TableBody>
-    </Table>
+    <Tabla eliminar={props.eliminarCurso} 
+    editar = {props.actualizaCurso}
+    lista = {cursos} />
   </section>
 }
 

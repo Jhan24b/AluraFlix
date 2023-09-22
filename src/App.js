@@ -212,20 +212,30 @@ function App() {
 
   //Eliminar a un curso
   const eliminarCurso = (id) => {
-    console.log("Eliminando curso", id);
     const nuevosCursos = cursos.filter((curso) => curso.id !== id)
-    actualizarColaboradores(nuevosCursos);
+    actualizarVideos(() => {
+      let videosSecundarios = JSON.parse(JSON.stringify(nuevosCursos));
+      videosSecundarios[0].videos.shift();
+      return videosSecundarios;
+    });
+    actualizarCursos(nuevosCursos);
   }
 
   //Actualizar datos de un curso
-  const actualizarCurso = (color, id) => {
-    const equiposActualizados = equipos.map((equipo) => {
-      if (equipo.id === id) {
-        equipo.colorPrimario = color;
+  const actualizaCurso = (modificado) => {
+    const cursoActualizado = cursos.map((curso) => {
+      if (curso.id === modificado.id) {
+        curso = modificado;
       }
-      return equipo;
-    })
-    actualizarEquipos(equiposActualizados);
+      return curso;
+    });
+    actualizarVideos(() => {
+      let videosSecundarios = JSON.parse(JSON.stringify(cursoActualizado));
+      videosSecundarios[0].videos.shift();
+      return videosSecundarios;
+    });
+    actualizarCursos(cursoActualizado);
+
   }
 
   // Registrar un nuevo video
@@ -298,8 +308,9 @@ function App() {
       {mostrarNuevaCategoria &&
         <FormularioCategoria
           crearCurso={crearCurso}
+          actualizaCurso ={actualizaCurso}
           eliminarCurso={eliminarCurso}
-          cursos={cursos.videos}
+          cursos={cursos}
         />
       }
       <Footer />
