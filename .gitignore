@@ -9,7 +9,8 @@
 /coverage
 
 # production
-# /build se comento para poder desplegar la app
+/build 
+#se descomento para poder desplegar la app mediante Vercel, en github da errores
 
 # misc
 .DS_Store
