@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/Aluraflix/static/css/main.7427b1f6.css",
+    "main.js": "/Aluraflix/static/js/main.fb22f1f3.js",
+    "static/js/787.a582c3f2.chunk.js": "/Aluraflix/static/js/787.a582c3f2.chunk.js",
+    "static/media/fondoPrincipal.png": "/Aluraflix/static/media/fondoPrincipal.9b5efa04a3b5d807b606.png",
+    "static/media/ig-img3.png": "/Aluraflix/static/media/ig-img3.4c63c684e542777c99b1.png",
+    "static/media/be-img3.png": "/Aluraflix/static/media/be-img3.517681d2dad7b67743db.png",
+    "static/media/ig-img2.png": "/Aluraflix/static/media/ig-img2.1593d91ccefa8bb4d5b7.png",
+    "static/media/VideoCard.png": "/Aluraflix/static/media/VideoCard.10a6e98cbd68362724e9.png",
+    "static/media/ig-img1.png": "/Aluraflix/static/media/ig-img1.c156076e7763cb5fd756.png",
+    "static/media/fe-img2.png": "/Aluraflix/static/media/fe-img2.6b4d4cec9fff8a4bdc3e.png",
+    "static/media/be-img1.png": "/Aluraflix/static/media/be-img1.69c586c49713cc400e07.png",
+    "static/media/fe-img4.png": "/Aluraflix/static/media/fe-img4.edc1e09c40d255bb1988.png",
+    "static/media/fe-img3.png": "/Aluraflix/static/media/fe-img3.ba79b58da72a17d631a4.png",
+    "static/media/be-img2.png": "/Aluraflix/static/media/be-img2.302f6e98896b187d6f3d.png",
+    "static/media/LogoMain.png": "/Aluraflix/static/media/LogoMain.83d4d4a72a82f79ce7d1.png",
+    "index.html": "/Aluraflix/index.html",
+    "main.7427b1f6.css.map": "/Aluraflix/static/css/main.7427b1f6.css.map",
+    "main.fb22f1f3.js.map": "/Aluraflix/static/js/main.fb22f1f3.js.map",
+    "787.a582c3f2.chunk.js.map": "/Aluraflix/static/js/787.a582c3f2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7427b1f6.css",
+    "static/js/main.fb22f1f3.js"
+  ]
+}
